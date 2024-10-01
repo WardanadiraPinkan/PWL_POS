@@ -2,17 +2,24 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class KategoriModel extends Model
 {
-    protected $table = 'm_kategori';
-    protected $primaryKey = 'kategori_id';
-    protected $fillable = ['kategori_kode', 'kategori_nama'];
+    use HasFactory;
 
-    public function barang(): HasMany
+    protected $table = 'm_kategori'; // Nama tabel
+    protected $primaryKey = 'kategori_id'; // Primary key
+
+    protected $fillable = ['kategori_kode', 'kategori_nama']; // Kolom yang bisa diisi
+
+    // Relasi dengan UserModel jika diperlukan
+    public function users(): HasMany
     {
-        return $this->hasMany(BarangModel::class, 'barang_id', 'barang_id');
+        return $this->hasMany(UserModel::class, 'kategori_id', 'kategori_id'); // Jika ada relasi
     }
+
+    // Jika ada relasi lain yang perlu ditambahkan, lakukan di sini
 }
