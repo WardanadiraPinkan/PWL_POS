@@ -9,7 +9,7 @@
             <form method="POST" action="{{ url('level') }}" class="form-horizontal">
                 @csrf
                 <div class="form-group row">
-                    <label class="col-1 control-label col-form-label">Kode Level</label>
+                    <label class="col-1 control-label col-form-label">Level Kode</label>
                     <div class="col-11">
                         <input type="text" class="form-control" id="level_kode" name="level_kode"
                             value="{{ old('level_kode') }}" required>

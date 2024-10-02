@@ -18,7 +18,7 @@
                         <td>{{ $level->level_id }}</td>
                     </tr>
                     <tr>
-                        <th>Kode Level</th>
+                        <th>Level Kode</th>
                         <td>{{ $level->level_kode }}</td>
                     </tr>
                     <tr>
@@ -27,9 +27,9 @@
                     </tr>
                 </table>
             @endempty
-        <a href="{{ url('level') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{ url('level') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
+        </div>
     </div>
-</div>
 @endsection
 @push('css')
 @endpush

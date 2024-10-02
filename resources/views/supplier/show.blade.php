@@ -18,22 +18,22 @@
                         <td>{{ $supplier->supplier_id }}</td>
                     </tr>
                     <tr>
-                        <th>Kode supplier</th>
+                        <th>Supplier Kode</th>
                         <td>{{ $supplier->supplier_kode }}</td>
                     </tr>
                     <tr>
-                        <th>Nama supplier</th>
+                        <th>Nama Supplier</th>
                         <td>{{ $supplier->supplier_nama }}</td>
                     </tr>
                     <tr>
-                        <th>Alamat supplier</th>
+                        <th>Alamat Supplier</th>
                         <td>{{ $supplier->supplier_alamat }}</td>
                     </tr>
                 </table>
             @endempty
-        <a href="{{ url('supplier') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{ url('supplier') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
+        </div>
     </div>
-</div>
 @endsection
 @push('css')
 @endpush

@@ -11,13 +11,14 @@
                     <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5>
                     Data yang Anda cari tidak ditemukan.
                 </div>
-                <a href="{{ url('user') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
+                <a href="{{ url('supplier') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
             @else
-                <form method="POST" action="{{ url('/supplier/' . $supplier->supplier_id) }}" class="formhorizontal">
+                <form method="POST" action="{{ url('/supplier/' . $supplier->supplier_id) }}" class="form-horizontal">
                     @csrf
-                    {!! method_field('PUT') !!} <!-- tambahkan baris ini untuk proses edit yang butuh method PUT -->
+                    {!! method_field('PUT') !!} <!-- tambahkan baris ini untuk proses edit yang butuh
+                    method PUT -->
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Kode supplier</label>
+                        <label class="col-1 control-label col-form-label">Supplier Kode</label>
                         <div class="col-11">
                             <input type="text" class="form-control" id="supplier_kode" name="supplier_kode"
                                 value="{{ old('supplier_kode', $supplier->supplier_kode) }}" required>
@@ -27,21 +28,21 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Nama supplier</label>
+                        <label class="col-1 control-label col-form-label">Nama Supplier</label>
                         <div class="col-11">
                             <input type="text" class="form-control" id="supplier_nama" name="supplier_nama"
                                 value="{{ old('supplier_nama', $supplier->supplier_nama) }}" required>
-                            @error('nama')
+                            @error('supplier_nama')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Alamat supplier</label>
+                        <label class="col-1 control-label col-form-label">Alamat Supplier</label>
                         <div class="col-11">
                             <input type="text" class="form-control" id="supplier_alamat" name="supplier_alamat"
                                 value="{{ old('supplier_alamat', $supplier->supplier_alamat) }}" required>
-                            @error('nama')
+                            @error('supplier_alamat')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
@@ -61,3 +62,4 @@
 @push('css')
 @endpush
 @push('js')
+@endpush

@@ -10,16 +10,13 @@ class KategoriModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'm_kategori'; // Nama tabel
-    protected $primaryKey = 'kategori_id'; // Primary key
+    protected $table = 'm_kategori'; // Mendefinisikan nama tabel yang digunakan oleh model ini
+    protected $primaryKey = 'kategori_id'; // Mendefinisikan primary key dari tabel yang digunakan
 
-    protected $fillable = ['kategori_kode', 'kategori_nama']; // Kolom yang bisa diisi
+    protected $fillable = ['kategori_kode','kategori_nama'];
 
-    // Relasi dengan UserModel jika diperlukan
-    public function users(): HasMany
+    public function barang():HasMany
     {
-        return $this->hasMany(UserModel::class, 'kategori_id', 'kategori_id'); // Jika ada relasi
+        return $this->hasMany(BarangModel::class, 'barang_id', 'barang_id');
     }
-
-    // Jika ada relasi lain yang perlu ditambahkan, lakukan di sini
 }
