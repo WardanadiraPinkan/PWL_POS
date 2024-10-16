@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\BarangController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::pattern('id', '[0-9]+');
+
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin']);
 Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
@@ -29,6 +33,7 @@ Route::post('register', [AuthController::class, 'store']);
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', [WelcomeController::class, 'index']);
+
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', [UserController::class, 'index']);          // menampilkan halaman awal user
         Route::post('/list', [UserController::class, 'list']);      // menampilkan data user dalam bentuk json untuk datatables
@@ -45,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']); // menghapus data user
         Route::delete('/{id}', [UserController::class, 'destroy']); // menghapus data user
     });
+
     // Route::group(['prefix' => 'level'], function () {
     Route::middleware(['authorize:ADM'])->group(function () {
         Route::get('/level', [LevelController::class, 'index']);          // menampilkan halaman awal level
@@ -62,6 +68,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/level/{id}', [LevelController::class, 'update']);     // menyimpan perubahan data level
         Route::delete('/level/{id}', [LevelController::class, 'destroy']); // menghapus data level
     });
+
     // Route::group(['prefix' => 'kategori'], function () {
     Route::middleware(['authorize:ADM,MNG'])->group(function () {
         Route::get('/kategori', [KategoriController::class, 'index']);          // menampilkan halaman awal kategori
@@ -79,6 +86,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/kategori/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']);
         Route::delete('/kategori/{id}', [KategoriController::class, 'destroy']); // menghapus data kategori
     });
+
     // Route::group(['prefix' => 'barang'], function () {
     Route::middleware(['authorize:ADM,MNG,STF,CUS'])->group(function () {
         Route::get('/barang', [BarangController::class, 'index']);          // menampilkan halaman awal barang
@@ -86,6 +94,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/barang/create', [BarangController::class, 'create']);   // menampilkan halaman form tambah barang
         Route::get('/barang/create_ajax', [BarangController::class, 'create_ajax']);
         Route::post('/barang', [BarangController::class, 'store']);         // menyimpan data barang baru
+        Route::get('/barang/import', [BarangController::class, 'import']); // ajax form upload excel
+        Route::post('/barang/import_ajax', [BarangController::class, 'import_ajax']); // ajax import excel
+        Route::get('/barang/export_excel', [BarangController::class, 'export_excel']); // export excel
+        Route::get('/barang/export_pdf', [BarangController::class, 'export_pdf']); // export pdf
         Route::post('/barang/ajax', [BarangController::class, 'store_ajax']);
         Route::get('/barang/{id}', [BarangController::class, 'show']);       // menampilkan detail barang
         Route::get('/barang/{id}/edit', [BarangController::class, 'edit']);  // menampilkan halaman form edit barang
@@ -96,6 +108,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/barang/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);
         Route::delete('/barang/{id}', [BarangController::class, 'destroy']); // menghapus data barang
     });
+
     // Route::group(['prefix' => 'supplier'], function () {
     Route::middleware(['authorize:ADM,MNG'])->group(function () {
         Route::get('/supplier', [SupplierController::class, 'index']);          // menampilkan halaman awal supplier
@@ -113,6 +126,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/supplier/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']);
         Route::delete('/supplier/{id}', [SupplierController::class, 'destroy']); // menghapus data supplier
     });
+
     // Route::group(['prefix' => 'stok'], function () {
     Route::middleware(['authorize:ADM,MNG,STF,CUS'])->group(function () {
         Route::get('/stok', [StokController::class, 'index']);          // menampilkan halaman awal stok
