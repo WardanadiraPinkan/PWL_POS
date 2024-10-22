@@ -6,9 +6,13 @@
         <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools">
-                <a class="btn btn-sm btn-primary mt-1" href="{{ url('user/create') }}">Tambah</a>
-                <button onclick="modalAction('{{ url('/user/create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah
-                    Ajax</button>
+                <button onclick="modalAction('{{ url('/user/import') }}')" class="btn btn-info">Import user</button>
+                <a href="{{ url('/user/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i> Export
+                    user</a>
+                <a href="{{ url('/user/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export
+                    user</a>
+                <button onclick="modalAction('{{ url('/user/create_ajax') }}')" class="btn btn-success">Tambah Data
+                    (Ajax)</button>
             </div>
         </div>
         <div class="card-body">
@@ -18,7 +22,7 @@
             @if (session('error'))
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
-            <div class="row">
+            <div id="filter" class="form-horizontal filter-date p-2 border-bottom mb-2">
                 <div class="col-md-12">
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label">Filter:</label>
@@ -29,19 +33,19 @@
                                     <option value="{{ $item->level_id }}">{{ $item->level_nama }}</option>
                                 @endforeach
                             </select>
-                            <small class="form-text text-muted">Level Pengguna</small>
+                            <small class="form-text text-muted">level</small>
                         </div>
                     </div>
                 </div>
             </div>
-            <table class="table table-bordered table-striped table-hover table-sm" id="table_user">
+            <table class="table table-bordered table-striped table-hover table-sm" id="table-user">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Username</th>
                         <th>Nama</th>
-                        <th>Level
-                            Pengguna</th>
+                        <th>Level Pengguna</th>
+                        <th>Foto</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -58,10 +62,11 @@
                 $('#myModal').modal('show');
             });
         }
-        var dataUser;
+        var tableUser;
         $(document).ready(function() {
-            dataUser = $('#table_user').DataTable({
+            tableUser = $('#table-user').DataTable({
                 // serverSide: true, jika ingin menggunakan server side processing
+                processing: true,
                 serverSide: true,
                 ajax: {
                     "url": "{{ url('user/list') }}",
@@ -72,38 +77,59 @@
                     }
                 },
                 columns: [{
-                    // nomor urut dari laravel datatable addIndexColumn()
                     data: "DT_RowIndex",
                     className: "text-center",
+                    width: "5%",
                     orderable: false,
                     searchable: false
                 }, {
                     data: "username",
                     className: "",
-                    // orderable: true, jika ingin kolom ini bisa diurutkan
+                    width: "10%",
                     orderable: true,
-                    // searchable: true, jika ingin kolom ini bisa dicari
                     searchable: true
                 }, {
                     data: "nama",
                     className: "",
+                    width: "25%",
                     orderable: true,
-                    searchable: true
+                    searchable: true,
                 }, {
-                    // mengambil data level hasil dari ORM berelasi
                     data: "level.level_nama",
                     className: "",
-                    orderable: false,
+                    width: "14%",
+                    orderable: true,
                     searchable: false
                 }, {
-                    data: "aksi",
+                    data: "foto",
                     className: "",
+                    width: "14%",
+                    orderable: false,
+                    searchable: false,
+                    "render": function(data) {
+                            // Check if data exists
+                            if (data) {
+                                return '<img src="{{ asset('') }}/' + data + '" width="50px" alt="User Photo"/>';
+                            }
+                            return 'Foto Kosong'; // Return empty if no data
+                        
+                    }
+
+                }, {
+                    data: "aksi",
+                    className: "text-center",
+                    width: "14%",
                     orderable: false,
                     searchable: false
                 }]
             });
-            $('#level_id').on('change', function() {
-                dataUser.ajax.reload();
+            $('#table-user_filter input').unbind().bind().on('keyup', function(e) {
+                if (e.keyCode == 13) { // enter key
+                    tableUser.search(this.value).draw();
+                }
+            });
+            $('#level_id').change(function() {
+                tableBarang.draw();
             });
         });
     </script>
