@@ -1,4 +1,4 @@
-<form action="{{ url('/user/ajax') }}" method="POST" id="form-tambah" enctype="multipart/form-data">
+<form action="{{ url('/user/create_ajax') }}" method="POST" id="form-tambah" enctype="multipart/form-data">
     @csrf
     <div id="modal-master" class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -13,7 +13,7 @@
                     <select name="level_id" id="level_id" class="form-control" required>
                         <option value="">- Pilih Level -</option>
                         @foreach ($level as $l)
-                            <option value="{{ $l->level_id }}">{{ $l->level_nama }}</option>
+                            <option value="{{ $l->level_id }}">{{ $l->level_nama }}</option>    
                         @endforeach
                     </select>
                     <small id="error-level_id" class="error-text form-text text-danger"></small>

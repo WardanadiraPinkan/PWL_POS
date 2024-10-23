@@ -19,16 +19,10 @@
                     <h3 class="card-title">{{ $page->title }}</h3>
                     <div class="card-tools">
                         <button onclick="modalAction('{{ url('/penjualan/import') }}')" class="btn btn-info">Import
-                            penjualan</button>
-                        <a href="{{ url('/penjualan/export_excel') }}" class="btn btn-primary"><i
-                                class="fa fa-file-excel"></i>
-                            Export penjualan</a>
-                        <a href="{{ url('/penjualan/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i>
-                            Export
-                            penjualan</a>
-                        <button onclick="modalAction('{{ url('/penjualan/create_ajax') }}')" class="btn btn-success">Tambah
-                            Data
-                            (Ajax)</button>
+                            Data</button>
+                        <a href="{{ url('/penjualan/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i>Export Excel</a>
+                        <a href="{{ url('/penjualan/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i>Export PDF</a>
+                        <button onclick="modalAction('{{ url('/penjualan/create_ajax') }}')" class="btn btn-success">Tambah Data(Ajax)</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -219,7 +213,7 @@
                     orderable: true,
                     searchable: false
                 }, {
-                    data: "barang.barang_id",
+                    data: "barang_id",
                     className: "",
                     width: "37%",
                     orderable: true,

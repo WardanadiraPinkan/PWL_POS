@@ -43,8 +43,7 @@
                         <th>No</th>
                         <th>Kode Barang</th>
                         <th>Nama Barang</th>
-                        <th>Harga
-                            Beli</th>
+                        <th>Harga Beli</th>
                         <th>Harga Jual</th>
                         <th>Kategori</th>
                         <th>Aksi</th>
@@ -92,7 +91,7 @@
                 }, {
                     data: "barang_nama",
                     className: "",
-                    width: "37%",
+                    width: "25%",
                     orderable: true,
                     searchable: true,
                 }, {
@@ -122,7 +121,7 @@
                 }, {
                     data: "aksi",
                     className: "text-center",
-                    width: "14%",
+                    width: "20%",
                     orderable: false,
                     searchable: false
                 }]
