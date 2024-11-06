@@ -15,7 +15,7 @@ class RegistrationController extends Controller
     {
         $level = LevelModel::select('level_id', 'level_nama')->get();
 
-        return view('auth.signup')
+        return view('auth.register')
                     ->with('level', $level);
     }
 

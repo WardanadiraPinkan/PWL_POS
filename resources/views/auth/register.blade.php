@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Signup Pengguna</title>
+    <title>Register Pengguna</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -17,64 +17,68 @@
     <!-- Custom Style -->
     <style>
         body, html {
-            height: 100%;
-            margin: 0;
-            font-family: 'Source Sans Pro', sans-serif;
-            background: url("{{ asset('adminlte/dist/img/Daftar.jpg') }}") no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        height: 100%;
+        margin: 0;
+        font-family: 'Source Sans Pro', sans-serif;
+        background: url("{{ asset('adminlte/dist/img/Daftar.jpg') }}") no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffe6f2; /* Background utama pink lembut */
+        }   
 
         .login-box {
-            width: 400px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 10px;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-        }
+        width: 500px;
+        max-width: 90%;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 10px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        }   
 
         .card {
-            background: transparent;
+        background: transparent;
         }
 
         .card-header a {
-            font-weight: bold;
-            font-size: 1.75rem;
-            color: #007bff;
-        }
+        font-weight: bold;
+        font-size: 1.75rem;
+        color: #ff4d88; 
+        }   
 
         .btn-primary {
-            background-color: #f76c38;
-            border-color: #f76c38;
-            border-radius: 5px;
+        background-color: #ff4d88; 
+        border-color: #ff4d88;
+        border-radius: 5px;
         }
 
         .btn-primary:hover {
-            background-color: #ff8c55;
-            border-color: #ff8c55;
+        background-color: #ff80aa; 
+        border-color: #ff80aa;
         }
 
         .form-control {
-            padding: 10px 15px;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.8);
+        padding: 10px 15px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.8);
+        border-color: #ff4d88; 
         }
 
+
         .icheck-primary {
-            padding-left: 0;
+        padding-left: 0;
         }
 
         .login-box p {
-            text-align: center;
-            color: #6c757d;
+        text-align: center;
+        color: #ff4d88; 
         }
 
         .card-outline.card-primary {
-            border-top: 3px solid rgba(0, 123, 255, 0.7);
+        border-top: 3px solid #ff4d88; 
         }
     </style>
 </head>
@@ -82,11 +86,11 @@
 <div class="login-box">
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a href="{{ url('/') }}" class="h1"><b>ANSA</b>PREMIUM</a>
+            <a href="{{ url('/') }}" class="h1"><b>PiNkIeSStOrE</b>StRaWbErRy</a>
         </div>
         <div class="card-body">
             <p class="login-box-msg">Daftar untuk membuat akun Anda</p>
-            <form action="{{ url('signup') }}" method="POST" id="form-tambah">
+            <form action="{{ url('register') }}" method="POST" id="form-tambah">
                 @csrf
                 <div class="form-group">
                     <label for="level_id">Level</label>
