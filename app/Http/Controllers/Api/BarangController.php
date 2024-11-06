@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 // app/Http/Controllers/Api/BarangController.php
+=======
+
+>>>>>>> acabc904b5cc370a12981355460067b09d9655b2
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -67,4 +71,9 @@ class BarangController extends Controller
             ], 500);
         }
     }
+}
+
+class BarangController extends Controller
+{
+    //
 }

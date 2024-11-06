@@ -1,10 +1,17 @@
 <?php
+<<<<<<< HEAD
 namespace App\Http\Controllers\Api;
+=======
+
+namespace App\Http\Controllers\Api;
+
+>>>>>>> acabc904b5cc370a12981355460067b09d9655b2
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
 {
+<<<<<<< HEAD
     public function index()
     {
         return response()->json([
@@ -57,3 +64,7 @@ class KategoriController extends Controller
         ], 200);
     }
 }
+=======
+    //
+}
+>>>>>>> acabc904b5cc370a12981355460067b09d9655b2
