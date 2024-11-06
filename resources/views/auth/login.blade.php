@@ -189,7 +189,7 @@
         </form>
 
         <div class="register-link">
-            <p>Belum Punya akun? <a href="{{ url('signup') }}">Daftar disini</a></p>
+            <p>Belum Punya akun? <a href="{{ url('register') }}">Daftar disini</a></p>
         </div>
 
         <!-- Gallery Section -->
